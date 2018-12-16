@@ -68,8 +68,21 @@ with tf.Session() as sess:
     w_value , b_value  = sess.run([w , b ])
 
 # * wont work matmul is important
-Y_pred = np.matmul(X_train,w_value) + b_value 
+Y_pred = np.matmul(X_train,w_value) + b_value
+# you can make your own X_train
 print('done')
+# we aee Y_pred is of shape (506,1)
+print(Y_pred.shape)
 
+# You can compare Y_pred and Y_train 
 plt.plot(total)
 plt.show()
+
+# if you want to predict values
+def Predictor(X):
+    Y_prediction = np.matmul(X,w_value) + b_value
+    # any number in the array will do because we are getting a 506*1 array due to broadcating of X from 1*13 to 506*13
+    # so any value u take in the array it will be same
+    print(Y_prediction[0])
+
+# now the input to Predictor should be a matrix of 1*13
