@@ -69,12 +69,13 @@ with tf.Session() as sess:
 
 # * wont work matmul is important
 Y_pred = np.matmul(X_train,w_value) + b_value
-# you can make your own X_train
 print('done')
 # we aee Y_pred is of shape (506,1)
 print(Y_pred.shape)
 
-# You can compare Y_pred and Y_train 
+# You can compare Y_pred and Y_train
+print(Y_pred[0])
+print(Y_train[0])
 plt.plot(total)
 plt.show()
 
@@ -85,4 +86,4 @@ def Predictor(X):
     # so any value u take in the array it will be same
     print(Y_prediction[0])
 
-# now the input to Predictor should be a matrix of 1*13
+# now the input to Predictor should be a matrix of 1*13 like Predictor([1,1,1,2,3,1,1,1,1,1,1,1,1])
