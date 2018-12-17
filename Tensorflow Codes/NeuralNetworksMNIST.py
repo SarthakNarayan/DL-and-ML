@@ -39,8 +39,9 @@ n_classes = 10
 # weights and biases initialization it is taken care of by tensorflow
 def multilayer_perceptron(x):
     fc1 = layers.fully_connected(x, no_hidden_units, activation_fn=tf.nn.relu, scope='fc1' )
-    #fc2 = layers.fully_connected(fc1, 256, activation_fn=tf.nn.relu, scope='fc2')
-    out = layers.fully_connected(fc1, n_classes, activation_fn=None, scope='out')
+    fc2 = layers.fully_connected(fc1, no_hidden_units, activation_fn=tf.nn.relu, scope='fc2')
+    # We are applying softmax activation in the output layer 
+    out = layers.fully_connected(fc2, n_classes, activation_fn=tf.nn.softmax, scope='out')
     return out
 
 # Define the model
