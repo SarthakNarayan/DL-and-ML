@@ -40,6 +40,7 @@ b = tf.Variable(tf.zeros([10]), name='b')
 # b = tf.Variable(tf.random_normal([10] , seed = 12), name='b')
 
 # Define the model
+# Here softmax is the activation function
 with tf.name_scope("wx_b") as scope:
     y_hat = tf.nn.softmax(tf.matmul(x,W) + b)
     
@@ -50,6 +51,7 @@ b_h = tf.summary.histogram("biases", b)
 
 # Define the cross-entropy loss function
 # We use the scalar summary to obtain the variation of loss function over time
+# Here cross-entropy is the loss function
 with tf.name_scope('cross-entropy') as scope:
     # logits is the prediction , labels are the true values
     loss = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(labels=y, logits=y_hat))
