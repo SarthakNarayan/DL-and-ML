@@ -28,6 +28,7 @@ def gettingData():
         path = os.path.join(Data_dir , category)
         label = Categories.index(category)
         for image in os.listdir(path):
+            # The image is being loaded as color image you can also load it in grayscale
             img_array = cv2.imread(os.path.join(path , image))
             # we resize because size of all images are not same
             img_array = cv2.resize(img_array , (100 , 100) )
