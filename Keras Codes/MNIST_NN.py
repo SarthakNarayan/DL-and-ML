@@ -55,10 +55,10 @@ model.add(Dense(10, activation='softmax' , name = 'output'))
 model.compile(optimizer = 'adam' , loss = 'categorical_crossentropy' , metrics = ['accuracy'])
 
 # Training the model
-model.fit(x_train , y_train , epochs=1)
+model.fit(x_train , y_train , epochs=1  , validation_split=0.2)
 
-val_loss , val_accuracy = model.evaluate(x_test , y_test)
-print(val_loss , (val_accuracy)*100)
+test_loss , test_accuracy = model.evaluate(x_test , y_test)
+print(test_loss , (test_accuracy)*100)
 
 # prediction
 # For prediction u need to alter the shape a bit because x_test[].shape for a single example is (784,)
