@@ -9,6 +9,7 @@ from sklearn.ensemble import VotingClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import BaggingClassifier
+from sklearn.ensemble import AdaBoostClassifier
 
 '''
 INFO ABOUT THE DATA
@@ -23,7 +24,7 @@ X = iris["data"]
 #print(X.shape)
 y = iris["target"]
 
-type_classifier = 3
+type_classifier = 7
 
 def choiceofclassifier(choice = 1):
     if(choice == 1):   
@@ -59,6 +60,12 @@ def choiceofclassifier(choice = 1):
         return bag_clf
     
     if(choice == 7):
+        ada_clf = AdaBoostClassifier(
+                DecisionTreeClassifier(max_depth=10), n_estimators=200,
+                learning_rate=0.5)
+        return ada_clf
+    
+    if(choice == 8):
         log_clf = LogisticRegression()
         rnd_clf = RandomForestClassifier()
         svm_clf = SVC()
@@ -106,4 +113,7 @@ if(type_classifier == 5):
 if(type_classifier == 6):
     print("bagging accuracy",score)
 if(type_classifier == 7):
+    print("Boosting accuracy",score)
+if(type_classifier == 8):
     print("Ensemble accuracy",score)
+
