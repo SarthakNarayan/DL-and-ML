@@ -41,15 +41,10 @@ print(clusters)
 assignments = list(kmeans.predict_cluster_idx(input_fn=input_fn))
 print(assignments)
 
-def ScatterPlot(X , Y, assignments=None, centers=None):
-  if assignments is None:
-    assignments = [0] * len(X)
-  fig = plt.figure(figsize=(14,8))
+def ScatterPlot(X , Y, assignments, centers):
+  plt.figure(figsize=(12,8))
   cmap = ListedColormap(['red', 'green', 'blue'])
   plt.scatter(X, Y, c=assignments, cmap=cmap)
-  if centers is not None:
-    plt.scatter(centers[:, 0], centers[:, 1], c=range(len(centers)), 
-                marker='+', s=400, cmap=cmap)  
   plt.xlabel('Sepia Length')
   plt.ylabel('Sepia Width')
   plt.show()
@@ -60,8 +55,10 @@ SSE = kmeans.score(input_fn=input_fn, steps=100)
 print(SSE)
 
 # We look for the elbow in the plot we can see it is present at 3
+# Calculate the SSE scores for different values of k and then plot
 K = [2, 3, 4, 5, 6]
 SSe = [3365.6772, 1515.8141, 943.30, 771.155, 392.64]
+plt.figure(figsize=(12,8))
 plt.plot(K,SSe)
 plt.xlabel('Number of Clusters')
 plt.ylabel('SSE')
