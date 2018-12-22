@@ -45,6 +45,8 @@ def ScatterPlot(X , Y, assignments, centers):
   plt.figure(figsize=(12,8))
   cmap = ListedColormap(['red', 'green', 'blue'])
   plt.scatter(X, Y, c=assignments, cmap=cmap)
+  plt.scatter(centers[:, 0], centers[:, 1], c=range(len(centers)), 
+                marker='+', s=400, cmap=cmap)
   plt.xlabel('Sepia Length')
   plt.ylabel('Sepia Width')
   plt.show()
